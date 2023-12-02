@@ -96,3 +96,12 @@ function removeTodo(e) {
     todos = todos.filter((t) => t.id !== todoId); 
     createTodos(todos); 
 }
+
+
+function checkTodo(e){
+  const todoId = Number(e.target.dataset.todoId );
+  const todo = todos.find((t) => t.id == todoId); 
+  todo.isCompleted = !todo.isCompleted; 
+  createTodos(todos);
+
+}
