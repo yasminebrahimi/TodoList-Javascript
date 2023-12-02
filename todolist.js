@@ -31,8 +31,11 @@ function addNewTodo(e) {
     };
 
     todos.push(newTodo); 
+    createTodos(todos); 
+}
 
-// create todos on DOM
+function createTodos(todos) {
+    // create todos on DOM
 let result = ""; 
 todos.forEach((todo) => {
     result += `<li class="todo">
@@ -52,13 +55,20 @@ function filterTodos (e) {
     const filter = e.target.value 
     switch(filter){
         case "all" :{
-
+            createTodos(todos); 
+            break; 
         }
         case "completed" :{
-            
+            const filteredTodo = todos.filter((t) => t.isCompleted); 
+            createTodos(filterTodos); 
+            break; 
         }
-        case "uncompleted" :{
-            
+        case "uncompleted" :{ 
+            const filteredTodo = todos.filter((t) => !t.isCompleted); 
+            createTodos(filterTodos); 
+            break;    
         }
+        default:
+            createTodos(todos);
     }
 }
