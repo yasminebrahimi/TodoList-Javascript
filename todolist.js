@@ -1,5 +1,5 @@
 
-const todos = []; 
+let todos = []; 
 
 
 
@@ -10,9 +10,11 @@ const todoList = document.querySelector(".todolist");
 const selectFilter = document.querySelector(".filter-todos"); 
 
 
+
 //events 
 todoForm.addEventListener("submit", addNewTodo); 
-selectFilter.addEventListener("change", filterTodos)
+selectFilter.addEventListener("change", filterTodos); 
+selectFilter.addEventListener("click", () => {}); 
 
 
 
@@ -87,3 +89,10 @@ function filterTodos(e) {
         createTodos(todos);
     }
   }
+
+function removeTodo(e) {
+    //console.log(e.target.dataset.todoId)
+    const todoId = Number(e.target.dataset.todoId ); 
+    todos = todos.filter((t) => t.id !== todoId); 
+    createTodos(todos); 
+}
