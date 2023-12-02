@@ -4,18 +4,20 @@ const todos = [];
 
 
 //selecting 
-
 const todoInput = document.querySelector(".todo-input");
 const todoForm = document.querySelector(".todo-form");
 const todoList = document.querySelector(".todolist");
+const selectFilter = document.querySelector(".selectFilter"); 
+
 
 //events 
-
 todoForm.addEventListener("submit", addNewTodo); 
+selectFilter.addEventListener("change", filterTodos)
+
+
+
 
 //functions
-
-
 function addNewTodo(e) {
     e.preventDefault();
   
@@ -43,4 +45,20 @@ todos.forEach((todo) => {
 }); 
 todoList.innerHTML = result;
 todoInput.value = ""; 
+}
+
+function filterTodos (e) {
+    console.log(e.target.value); 
+    const filter = e.target.value 
+    switch(filter){
+        case "all" :{
+
+        }
+        case "completed" :{
+            
+        }
+        case "uncompleted" :{
+            
+        }
+    }
 }
