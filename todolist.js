@@ -1,5 +1,5 @@
 
-let todos = []; 
+//let todos = []; 
 let filterValue = "all"; 
 
 
@@ -12,6 +12,15 @@ const selectFilter = document.querySelector(".filter-todos");
 
 
 //events 
+
+
+document.addEventListener("DOMContentLoaded", (e) => {
+  const todos = getAllTodos(); 
+  createTodos(todos); 
+})
+
+
+
 todoForm.addEventListener("submit", addNewTodo); 
 selectFilter.addEventListener("change", (e) => {
   filterValue = e.target.value; 
@@ -34,7 +43,8 @@ function addNewTodo(e) {
       isCompleted: false,
     };
 
-    todos.push(newTodo); 
+    //todos.push(newTodo); 
+    saveTodo(newTodo); 
     filterTodos(); 
 }
 
@@ -71,6 +81,7 @@ function createTodos(todos) {
 function filterTodos() {
     // console.log(e.target.value);
     // const filter = e.target.value;
+    const todos = getAllTodos(); 
     switch (filterValue) {
       case "all": {
         createTodos(todos);
@@ -93,6 +104,7 @@ function filterTodos() {
 
 function removeTodo(e) {
     //console.log(e.target.dataset.todoId)
+    const todos = getAllTodos(); 
     const todoId = Number(e.target.dataset.todoId ); 
     todos = todos.filter((t) => t.id !== todoId); 
     filterTodos();  
@@ -100,6 +112,7 @@ function removeTodo(e) {
 
 
 function checkTodo(e){
+  const todos = getAllTodos(); 
   const todoId = Number(e.target.dataset.todoId );
   const todo = todos.find((t) => t.id == todoId); 
   todo.isCompleted = !todo.isCompleted; 
@@ -120,8 +133,9 @@ function getAllTodos(){
 }
 
 function saveTodo(todo){
-  const saveTodos = JSON.parse(localStorage.getItem
-    ("todos")) || []; 
+  //const saveTodos = JSON.parse(localStorage.getItem("todos")) || [];
+  const savedTodos = getAllTodos();  
     saveTodo.push(todo);  
-    localStorage.setItem("todos", JSON.stringify(saveTodos)); 
+    localStorage.setItem("todos", JSON.stringify(saveTodos));
+    return savedTodos;  
 }
