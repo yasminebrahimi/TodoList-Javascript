@@ -56,7 +56,7 @@ function createTodos(todos) {
     }</p>
       <span class="todo__createdAt">${new Date(
         todo.createdAt
-      ).toLocaleDateString("fa-IR")}</span>
+      ).toLocaleDateString("en-GB")}</span>
       <button class="todo__check" data-todo-id=${
         todo.id
       } ><i class="far fa-check-square"></i></button>
