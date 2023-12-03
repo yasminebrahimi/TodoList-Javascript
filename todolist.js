@@ -105,3 +105,23 @@ function checkTodo(e){
   todo.isCompleted = !todo.isCompleted; 
   filterTodos(); 
 }
+
+
+
+// localStorage => web API
+
+/*localStorage.setItem("todos", JSON.stringify(todos)); 
+JSON.parse(localStorage.getItem("todos"));*/
+
+function getAllTodos(){ 
+  const savedTodos = JSON.parse(localStorage.getItem
+    ("todos")) || [] ; 
+    return savedTodos; 
+}
+
+function saveTodo(todo){
+  const saveTodos = JSON.parse(localStorage.getItem
+    ("todos")) || []; 
+    saveTodo.push(todo);  
+    localStorage.setItem("todos", JSON.stringify(saveTodos)); 
+}
